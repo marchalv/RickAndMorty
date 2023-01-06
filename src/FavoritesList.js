@@ -6,16 +6,23 @@ import Character from './Character';
 function FavoritesList() {
     const [characters, setCharacters] = useState([]);
 
+
     useEffect(() => {
         fetch('https://rickandmortyapi.com/api/character')
             .then(response => response.json())
             .then(data => {
-                const allCharacters = data.results;
+                const nCharacters = data.info.count;
                 const favoriteCharacters = [];
-                for (let i = 0; i < allCharacters.length; i++) {
-                    const favoriteCookie = Cookies.get(`favorite-${allCharacters[i].id}`);
+                for (let i = 0; i < nCharacters; i++) {
+                    const favoriteCookie = Cookies.get(`favorite-${i}`);
                     if (favoriteCookie) {
-                        favoriteCharacters.push(allCharacters[i]);
+                        fetch(`https://rickandmortyapi.com/api/character/${i}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                favoriteCharacters.push(data);
+                                setCharacters(favoriteCharacters);
+                            }
+                        );
                     }
                 }
                 setCharacters(favoriteCharacters);
@@ -23,6 +30,7 @@ function FavoritesList() {
         );
     }
     , []);
+
     if (characters.length === 0) {
         return (
             <div>

@@ -7,14 +7,22 @@ function RandomCharacters() {
         fetch('https://rickandmortyapi.com/api/character')
             .then(response => response.json())
             .then(data => {
-                const allCharacters = data.results;
+                const nCharacters = data.info.count;
+                const randomCharacterIds = [];
                 const randomCharacters = [];
                 for (let i = 0; i < 5; i++) {
-                    let randomIndex = Math.floor(Math.random() * allCharacters.length);
-                    while (randomCharacters.includes(allCharacters[randomIndex])) {
-                        randomIndex = Math.floor(Math.random() * allCharacters.length);
+                    let randomIndex = Math.floor(Math.random() * nCharacters);
+                    while (randomCharacterIds.includes(randomIndex)) {
+                        randomIndex = Math.floor(Math.random() * nCharacters);
                     }
-                    randomCharacters.push(allCharacters[randomIndex]);
+                    randomCharacterIds.push(randomIndex);
+                    fetch(`https://rickandmortyapi.com/api/character/${randomIndex}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            randomCharacters.push(data);
+                            setCharacters(randomCharacters);
+                        }
+                    );
                 }
                 setCharacters(randomCharacters);
             });
