@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Cookies from 'js-cookie';
+//import CharacterCard from './CharacterCard';
 import Character from './Character';
 
 function FavoritesList() {

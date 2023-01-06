@@ -5,7 +5,7 @@ import logo from './logo_rickandmorty.png';
 
 export default function MenuTop() {
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" className='navbar'>
             <Container>
                 <Navbar.Brand href="/">
                     <img src={logo} alt="Rick And Morty" height={30}/>

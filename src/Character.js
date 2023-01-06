@@ -7,7 +7,7 @@ function Character({ character }) {
     return (
         <div>
             <Link to={`/characters/${character.id}`}>
-                <img src={character.image} alt={character.name} className='character-icon'/>
+                <img src={character.image} alt={character.name} className='character-icon rounded-circle'/>
                 {character.name}
             </Link>
             <FavButton character={character}/>
