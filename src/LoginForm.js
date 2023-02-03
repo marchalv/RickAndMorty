@@ -5,27 +5,21 @@ import {useNavigate} from 'react-router-dom'
 import { connect } from 'react-redux';
 import { login } from './redux/actions';
 
-const LoginForm = (props) => {
-
-
+const LoginForm = (state) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
-    const history = useNavigate()
-
-
-
+    const history = useNavigate();
     const loginSubmit = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
                 console.log('login success');
                 history('/');
-                props.login();
+                login.setState({isLoggedIn: true})
             })
             .catch(err => setError(err.message));
     };
-
 
     return (
         <div className="container h-100">

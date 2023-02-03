@@ -1,7 +1,8 @@
 import { LOGIN, LOGOUT } from './actions';
 
 let initialState = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    email: '',
 }
 
 const authReducer = (state = initialState, action) => {
@@ -11,6 +12,7 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoggedIn: true
+
             };
         case LOGOUT:
             return {

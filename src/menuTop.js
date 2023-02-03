@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 const MenuTop = (props) => {
     const { isLoggedIn } = props;
+    console.log(isLoggedIn);
 
     return (
         <Navbar bg="dark" variant="dark" className='navbar'>
@@ -34,7 +35,8 @@ const MenuTop = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        isLoggedIn: state.isLoggedIn
+        isLoggedIn: state.isLoggedIn,
+        email: state.email
     };
 }
 
