@@ -9,6 +9,9 @@ import MenuTop from "./menuTop";
 import EpisodeRoute from "./EpisodeRoute";
 import FavoritesList from "./FavoritesList";
 import EpisodeList from "./EpisodeList";
+import SignUpForm from "./SignUpForm";
+import LoginForm from "./LoginForm";
+
 
 function App() {
 
@@ -25,6 +28,8 @@ function App() {
                         <Route path="/episodes/:id" element={<EpisodeRoute />} />
                         <Route path="favorites" element={<FavoritesList />} />
                         <Route path={"episodes"} element={<EpisodeList />} />
+                        <Route path="/register" element={<SignUpForm /> } />
+                        <Route path="/login" element={<LoginForm /> } />
                     </Routes>
                 </div>
             </Router>
